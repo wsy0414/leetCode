@@ -15,19 +15,17 @@ type ListNode struct {
 }
 
 func NewListNode(list []int) *ListNode {
-	return newListNode(list, 0)
-}
-
-func newListNode(list []int, i int) *ListNode {
-	if i == len(list)-1 {
+	if len(list) == 0 {
+		return &ListNode{}
+	}
+	if len(list) == 1 {
 		return &ListNode{
-			Val: list[len(list)-1],
+			Val: list[0],
 		}
 	}
-
 	return &ListNode{
-		Val:  list[i],
-		Next: newListNode(list, i+1),
+		Val:  list[0],
+		Next: NewListNode(list[1:]),
 	}
 }
 
